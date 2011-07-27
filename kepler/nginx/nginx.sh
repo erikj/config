@@ -9,6 +9,7 @@ function on_die() {
 
 trap on_die TERM
 
-sudo $NGINX_BIN $@ &
+# sudo $NGINX_BIN $@ &
+$NGINX_BIN $@ &
 
 wait
