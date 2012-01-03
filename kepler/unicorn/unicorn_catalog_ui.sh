@@ -1,5 +1,16 @@
+rack_env='development'
+port=8080
+
+if [ $1 ]; then
+  rack_env=$1
+fi
+
+if [ $2 ]; then
+  port=$2
+fi
+
+
 rails_root="/Users/ej/Dropbox/UCAR/catalog_ui"
-# unicorn="/Users/ej/.rvm/gems/ruby-1.8.7-p352/bin/unicorn"
 bundle="/Users/ej/.rvm/gems/ruby-1.8.7-p352/bin/bundle"
 
 # http://beginrescueend.com/workflow/scripting/
@@ -16,4 +27,9 @@ else
 fi
 
 cd $rails_root
-$bundle exec unicorn_rails
+
+exe="$bundle exec unicorn_rails -E $rack_env -p $port"
+
+echo $exe
+
+$exe
