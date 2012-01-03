@@ -1,5 +1,5 @@
 rails_root="/Users/ej/Dropbox/UCAR/catalog_ui"
-unicorn="/Users/ej/.rvm/gems/ruby-1.8.7-p352/bin/unicorn"
+# unicorn="/Users/ej/.rvm/gems/ruby-1.8.7-p352/bin/unicorn"
 bundle="/Users/ej/.rvm/gems/ruby-1.8.7-p352/bin/bundle"
 
 # http://beginrescueend.com/workflow/scripting/
@@ -16,4 +16,4 @@ else
 fi
 
 cd $rails_root
-$bundle exec unicorn
+$bundle exec unicorn_rails
