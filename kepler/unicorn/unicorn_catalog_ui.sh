@@ -1,3 +1,7 @@
+#!/bin/bash
+
+# /opt/local/sbin/unicorn_catalog_ui.sh
+
 rack_env='development'
 port=8080
 
