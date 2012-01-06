@@ -11,7 +11,7 @@
     <key>ProgramArguments</key>
     <array>
       <string>/opt/local/sbin/unicorn_catalog_ui.sh</string>
-      <string>production</string>
+      <string>development</string>
     </array>
     <key>WorkingDirectory</key>
     <string>/Users/ej/Dropbox/UCAR/catalog_ui</string>
