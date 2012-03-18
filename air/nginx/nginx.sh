@@ -1,6 +1,6 @@
 #!/bin/bash
 
-NGINX_BIN="/opt/local/nginx/sbin/nginx"
+NGINX_BIN="/usr/local/sbin/nginx"
 
 function on_die() {
     sudo $NGINX_BIN -s stop

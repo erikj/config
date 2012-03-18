@@ -10,9 +10,9 @@
     <true/>
     <key>ProgramArguments</key>
     <array>
-        <string>/opt/local/nginx/sbin/nginx.sh</string>
+        <string>/usr/local/sbin/nginx.sh</string>
     </array>
     <key>WorkingDirectory</key>
-    <string>/opt/local/nginx</string>
+    <string>/usr/local/Cellar/nginx/1.0.13/</string>
   </dict>
 </plist>

@@ -5,5 +5,5 @@ followed instructions @ http://wiki.summercode.com/running_homebrewed_nginx_with
 to load nginx on port 80 via root and not sudo, stage files in these locations:
 
  * /Library/LaunchDaemons/org.nginx.plist
- * /opt/local/nginx/sbin/nginx.sh
- * /opt/local/nginx/conf/nginx.conf
+ * /usr/local/sbin/nginx.sh
+ * /usr/local/nginx/conf/nginx.conf
