@@ -1,0 +1,4 @@
+export POW_RVM_PATH=/usr/local/rvm/scripts/rvm
+# play nicely w/ Apache, which runs on port 80
+# cause pow's firewall run to redirect all traffic from port 88 instead of port 80
+export POW_DST_PORT=88
