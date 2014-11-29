@@ -1,0 +1,60 @@
+#! /bin/sh
+
+# cf. https://github.com/abrasive/shairport/blob/master/scripts/debian/init.d/shairport
+
+### BEGIN INIT INFO
+# Provides:          shairport
+# Required-Start:    $remote_fs $networking
+# Required-Stop:     $remote_fs $networking
+# Should-Start:      pulseaudio alsa-utils hostname avahi
+# Should-Stop:       pulseaudio alsa-utils hostname avahi
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+### END INIT INFO
+
+
+EXECUTABLE=/usr/local/bin/shairport
+PID=/var/run/shairport.pid
+LOG=/var/log/shairport.log
+
+. /lib/lsb/init-functions
+
+case "$1" in
+   start)
+      if ! [ -d $(dirname $PID) ]; then
+        mkdir -p -m 0755 $(dirname $PID)
+      fi
+      if [ -e $PID ]; then
+        PIDDIR=/proc/$(cat $PID)
+        if [ -d ${PIDDIR} -a  "$(readlink -f ${PIDDIR}/exe)" = "${EXECUTABLE}" ]; then
+          log_success_msg "shairport already started."
+          exit
+        else
+          log_success_msg "Removing stale PID file $PID."
+          rm -f $PID
+        fi
+      fi
+      log_daemon_msg "Starting shairport"
+      $EXECUTABLE -d --name AirPi --log $LOG --pidfile $PID
+      # echo $! > $PID
+      log_end_msg $?
+      ;;
+   stop)
+      log_daemon_msg "Stopping shairport"
+      kill -9 `cat $PID`
+      log_end_msg $?
+      rm -f $PID
+      ;;
+   restart)
+      log_action_begin_msg "Restarting shairport"
+      $0 stop
+      $0 start
+      log_action_end_msg $?
+      ;;
+   *)
+      echo "Usage: shairport {start|stop|restart}" >&2
+      exit 1
+      ;;
+esac
+
+exit 0
